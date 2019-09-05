@@ -19,6 +19,8 @@ Visual Studio 2013 ("Visual Studio 12") was used to develop most of the samples.
 An update to add support for 2015 will land shortly. Code should compile, but the
 templates for the project files are not in the repository at this time.
 Other compilers and IDEs should work, but we haven't tested them.
+For example:if we build Vitual Studio 2013 ，We Can input Command--
+cmake -G "Visual Studio 12 2013" .. 
 
 Running
 -------
