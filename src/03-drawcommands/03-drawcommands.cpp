@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2015 Graham Sellers
+ * Copyright ?2012-2015 Graham Sellers
  *
  * This code is part of the OpenGL Programming Guide, 9th Edition.
  *
@@ -124,6 +124,33 @@ void DrawCommandExample::Initialize(const char * title)
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)sizeof(vertex_positions));
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+}
+
+enum {vbo,vboColor, bufferLength};
+
+void BufferCommand() {
+	const static GLfloat vertexPos[]={
+		0.0f,0.5f,0.f,1.f,
+		-.5f,-.5f,0.f,1.f,
+		.5f,-.5f,0.f,1.f
+	};
+
+	const static GLfloat vertexColor[] = {
+		1.f,0.f,0.f,1.f,
+		1.f,0.f,0.f,1.f,
+		1.f,0.f,0.f,1.f,
+	};
+	const static GLshort indexs[] = {1u,2u,3u};
+	GLuint* buffers = new GLuint[bufferLength];
+	glGenBuffers(bufferLength,buffers);
+	glBindBuffer(GL_ARRAY_BUFFER, buffers[vbo]);
+	glBufferData(GL_ARRAY_BUFFER,sizeof(vertexPos)+sizeof(vertexColor),NULL,GL_STATIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(vertexPos),vertexPos);
+	glBufferSubData(GL_ARRAY_BUFFER,sizeof(vertexPos),sizeof(vertexColor),vertexColor);
+	glVertexAttribPointer(0,4,GL_FLOAT,GL_FALSE,0,NULL);
+	glVertexAttribPointer(0,4,GL_FLOAT,GL_FALSE,0,(const GLvoid*)sizeof(vertexPos));
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
 }
 
 void DrawCommandExample::Display(bool auto_redraw)
