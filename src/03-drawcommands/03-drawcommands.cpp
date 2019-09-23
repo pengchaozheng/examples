@@ -87,7 +87,23 @@ void DrawCommandExample::Initialize(const char * title)
         -1.0f, -1.0f,  0.0f, 1.0f,
          1.0f, -1.0f,  0.0f, 1.0f,
         -1.0f,  1.0f,  0.0f, 1.0f,
-        -1.0f, -1.0f,  0.0f, 1.0f,
+        //-1.0f, -1.0f,  0.0f, 1.0f,
+
+		-1.0+2.f, -1.0f,  0.0f, 1.0f,
+		 1.0f+2.f, -1.0f,  0.0f, 1.0f,
+		-1.0f+2.f,  1.0f,  0.0f, 1.0f,
+		//-1.0f+2.f, -1.0f,  0.0f, 1.0f,
+
+		-1.0f+4.f, -1.0f,  0.0f, 1.0f,
+		 1.0f+4.f, -1.0f,  0.0f, 1.0f,
+		-1.0f+4.f,  1.0f,  0.0f, 1.0f,
+		//-1.0f+4.f, -1.0f,  0.0f, 1.0f,
+
+		-1.0f+6.f, -1.0f,  0.0f, 1.0f,
+		 1.0f+6.f, -1.0f,  0.0f, 1.0f,
+		-1.0f+6.f,  1.0f,  0.0f, 1.0f,
+		//-1.0f+6.f, -1.0f,  0.0f, 1.0f,
+
     };
 
     // Color for each vertex
@@ -96,14 +112,35 @@ void DrawCommandExample::Initialize(const char * title)
         1.0f, 1.0f, 1.0f, 1.0f,
         1.0f, 1.0f, 0.0f, 1.0f,
         1.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f
+        //0.0f, 1.0f, 1.0f, 1.0f,
+
+		 1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 1.0f,
+		//0.0f, 1.0f, 1.0f, 1.0f,
+
+		 1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 1.0f,
+		//0.0f, 1.0f, 1.0f, 1.0f,
+
+		 1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 1.0f,
+		//0.0f, 1.0f, 1.0f, 1.0f,
+
     };
 
     // Indices for the triangle strips
     static const GLushort vertex_indices[] =
     {
         0, 1, 2
+		,3,4,5
+		,6,7,8
+		,9,10,11
     };
+
+	
 
     // Set up the element array buffer
     glGenBuffers(1, ebo);
@@ -127,31 +164,6 @@ void DrawCommandExample::Initialize(const char * title)
 }
 
 enum {vbo,vboColor, bufferLength};
-
-void BufferCommand() {
-	const static GLfloat vertexPos[]={
-		0.0f,0.5f,0.f,1.f,
-		-.5f,-.5f,0.f,1.f,
-		.5f,-.5f,0.f,1.f
-	};
-
-	const static GLfloat vertexColor[] = {
-		1.f,0.f,0.f,1.f,
-		1.f,0.f,0.f,1.f,
-		1.f,0.f,0.f,1.f,
-	};
-	const static GLshort indexs[] = {1u,2u,3u};
-	GLuint* buffers = new GLuint[bufferLength];
-	glGenBuffers(bufferLength,buffers);
-	glBindBuffer(GL_ARRAY_BUFFER, buffers[vbo]);
-	glBufferData(GL_ARRAY_BUFFER,sizeof(vertexPos)+sizeof(vertexColor),NULL,GL_STATIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(vertexPos),vertexPos);
-	glBufferSubData(GL_ARRAY_BUFFER,sizeof(vertexPos),sizeof(vertexColor),vertexColor);
-	glVertexAttribPointer(0,4,GL_FLOAT,GL_FALSE,0,NULL);
-	glVertexAttribPointer(0,4,GL_FLOAT,GL_FALSE,0,(const GLvoid*)sizeof(vertexPos));
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-}
 
 void DrawCommandExample::Display(bool auto_redraw)
 {
@@ -182,22 +194,45 @@ void DrawCommandExample::Display(bool auto_redraw)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo[0]);
 
     // Draw Arrays...
-    model_matrix = vmath::translate(-3.0f, 0.0f, -5.0f);
+    model_matrix = vmath::translate(-4.f, 3.0f, -5.0f);
+	model_matrix *= vmath::scale(0.5f,0.5f,0.5f);
     glUniformMatrix4fv(render_model_matrix_loc, 1, GL_FALSE, model_matrix);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES,0,12);
+
+	//draw multi Array
+	//static const GLint firsts[] = {0,3,6,9};
+	//static const GLint counts[] = { 3,3,3,3 };
+	//glMultiDrawArrays(GL_TRIANGLES,firsts,counts,4);
 
     // DrawElements
-    model_matrix = vmath::translate(-1.0f, 0.0f, -5.0f);
+    model_matrix = vmath::translate(-4.0f, 2.0f, -5.0f);
+	model_matrix *= vmath::scale(0.5f,0.5f,0.5f);
     glUniformMatrix4fv(render_model_matrix_loc, 1, GL_FALSE, model_matrix);
-    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, NULL);
+    glDrawElements(GL_TRIANGLES,  0, GL_UNSIGNED_SHORT, NULL);
+
+	//draw Multi Elements
+
+
+	static const GLint elementCounts[] = { 3,3,3,3 };
+	static const GLvoid* indices[] = {
+		(GLvoid*)0,
+		(GLvoid*)(3*sizeof(GLushort)),
+		(GLvoid*)(6*sizeof(GLushort)),
+		(GLvoid*)(9*sizeof(GLushort)),
+	};
+	glMultiDrawElements(GL_TRIANGLES,elementCounts,GL_UNSIGNED_SHORT,indices,4);
+	
+
 
     // DrawElementsBaseVertex
-    model_matrix = vmath::translate(1.0f, 0.0f, -5.0f);
+    model_matrix = vmath::translate(-4.0f, 1.0f, -5.0f);
+	model_matrix *= vmath::scale(0.5f, 0.5f, 0.5f);
     glUniformMatrix4fv(render_model_matrix_loc, 1, GL_FALSE, model_matrix);
-    glDrawElementsBaseVertex(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, NULL, 1);
+    glDrawElementsBaseVertex(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, NULL, 0);
 
     // DrawArraysInstanced
-    model_matrix = vmath::translate(3.0f, 0.0f, -5.0f);
+    model_matrix = vmath::translate(-4.0f, 0.0f, -5.0f);
+	model_matrix *= vmath::scale(0.5f, 0.5f, 0.5f);
     glUniformMatrix4fv(render_model_matrix_loc, 1, GL_FALSE, model_matrix);
     glDrawArraysInstanced(GL_TRIANGLES, 0, 3, 1);
 
