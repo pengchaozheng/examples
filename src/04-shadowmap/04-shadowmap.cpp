@@ -131,7 +131,7 @@ void ShadowMapExample::Initialize(const char * title)
     // Create FBO to render depth into
     glGenFramebuffers(1, &depth_fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, depth_fbo);
-    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, depth_texture, 0);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depth_texture, 0);
     glDrawBuffer(GL_NONE);
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
