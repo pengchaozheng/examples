@@ -3,3 +3,14 @@ build/*
 bin/*
 !bin/media/
 *.lib
+src/virtualTexture/06-load-texture.dir/Debug/VT.vcxprojAssemblyReference.cache
+src/virtualTexture/06-load-texture.dir/Debug/VT.log
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/virtualtexture.lastbuildstate
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/link.write.1.tlog
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/link.read.1.tlog
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/link.command.1.tlog
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/CL.write.1.tlog
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/CL.read.1.tlog
+src/virtualTexture/06-load-texture.dir/Debug/virtualtexture.tlog/cl.command.1.tlog
+src/virtualTexture/06-load-texture.dir/Debug/vc120.pdb
+src/virtualTexture/06-load-texture.dir/Debug/06-load-texture.obj
