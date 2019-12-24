@@ -258,6 +258,8 @@
   <ItemGroup>
     <ClInclude Include="E:\Git\examples\include\vgl.h" />
     <ClInclude Include="E:\Git\examples\include\vapp.h" />
+    <ClInclude Include="IndirectTextureManager.h" />
+    <ClInclude Include="virtualTextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="E:\Git\examples\build\ZERO_CHECK.vcxproj">
@@ -271,6 +273,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="06-load-texture.cpp" />
+    <ClCompile Include="IndirectTextureManager.cpp" />
+    <ClCompile Include="virtualTextureManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
