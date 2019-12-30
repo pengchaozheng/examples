@@ -259,6 +259,7 @@
     <ClInclude Include="E:\Git\examples\include\vgl.h" />
     <ClInclude Include="E:\Git\examples\include\vapp.h" />
     <ClInclude Include="IndirectTextureManager.h" />
+    <ClInclude Include="PhysicTextureManager.h" />
     <ClInclude Include="virtualTextureManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +275,7 @@
   <ItemGroup>
     <ClCompile Include="06-load-texture.cpp" />
     <ClCompile Include="IndirectTextureManager.cpp" />
+    <ClCompile Include="PhysicTextureManager.cpp" />
     <ClCompile Include="virtualTextureManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
