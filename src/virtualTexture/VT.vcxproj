@@ -261,6 +261,7 @@
     <ClInclude Include="IndirectTextureManager.h" />
     <ClInclude Include="PhysicTextureManager.h" />
     <ClInclude Include="virtualTextureManager.h" />
+    <ClInclude Include="VTDefs.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="E:\Git\examples\build\ZERO_CHECK.vcxproj">

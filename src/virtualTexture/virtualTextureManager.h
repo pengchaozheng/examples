@@ -25,7 +25,4 @@ class VirtualTextureManager
 public:
 	GLuint width;
 	GLuint height;
-
-
-
 };
