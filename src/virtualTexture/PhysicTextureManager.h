@@ -43,6 +43,7 @@ public:
 	GLuint getValideTileId();
 private:
 	void initPhysicTexture(GLuint texId, GLuint arrayId, GLuint* tileIds,  GLsizei tileRows, GLsizei tileColumns ,GLsizei tileCount, GLsizei tileSize, GLuint mipMapLevers, GLenum texFormat);
+	void init(GLuint arrayTexId,PhysicTileInfo* info);
 };
 
 

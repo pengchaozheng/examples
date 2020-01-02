@@ -11,7 +11,7 @@ PhysicTextureManager::PhysicTextureManager(GLsizei k, GLsizei tileSize, GLsizei 
 	for (int i = 0; i < tileCount; i++) {
 		PhysicTileInfo* data = new PhysicTileInfo;
 		if (NULL == data) {
-			printf("Init TieInfo Failed id %d\n"+i);
+			fprintf(stderr,"Init TieInfo Failed id %d\n"+i);
 			return;
 		}
 		data->id = i;
@@ -34,10 +34,10 @@ void PhysicTextureManager::initPhysicTexture(
 	glTextureStorage3D(GL_TEXTURE_2D_ARRAY,mipMapLevers,texFormat,tileSize,tileSize,tileCount);
 	errorID = glGetError();
 	if (GL_NO_ERROR == errorID) {
-		printf("Init Physic ArrayTexture Success!\n");
+		fprintf(stderr,"Init Physic ArrayTexture Success!\n");
 	}
 	else {
-		printf("init Physic ArrayTexture Failed! Error id:%d\n", errorID);
+		fprintf(stderr,"init Physic ArrayTexture Failed! Error id:%d\n", errorID);
 	}
 	//创建物理贴图的整张贴图试图
 	glTextureView(texId
@@ -48,17 +48,28 @@ void PhysicTextureManager::initPhysicTexture(
 	,0,tileCount);
 	errorID = glGetError();
 	if (GL_NO_ERROR == errorID ) {
-		printf("Init Physic textureView Success!");
+		fprintf(stderr,"Init Physic textureView Success!");
 	}
 	else {
-		printf("init Physic textureView Failed! Error id:%d\n", errorID);
+		fprintf(stderr,"init Physic textureView Failed! Error id:%d\n", errorID);
 	}
 }
 
 
 
 
+void PhysicTextureManager::init(GLuint arrayTexId,PhysicTileInfo* info) {
+	if (NULL == info) {
+		fprintf(stderr,"Tile Info Is NULL!\n");
+		return;
+	}
+	glTextureView(info->texName
+		,GL_TEXTURE_2D
+	,arrayTexId,info->interFormat
+	,0,11
+	,0,100);
 
+}
 
 
 PhysicTextureManager::~PhysicTextureManager() {
